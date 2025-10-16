@@ -22,4 +22,9 @@ class ToolsDataService(val dataService: DataService) {
     fun getUserClaims(): List<Claim> {
         return dataService.getClaims()
     }
+
+    @Tool("Get last claim")
+    fun getLastClaim(): Claim {
+        return dataService.getClaims().sortedByDescending { it.claimDate }[0]
+    }
 }
